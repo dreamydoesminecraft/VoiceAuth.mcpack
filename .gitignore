@@ -1,0 +1,76 @@
+# ============================
+# System Files
+# ============================
+.DS_Store
+Thumbs.db
+desktop.ini
+__MACOSX/
+
+# iPad / iOS Temp Files
+._*
+*.icloud
+
+# ============================
+# Editor / Workspace Files
+# ============================
+.vscode/
+.vscode-test/
+*.code-workspace
+
+# GitHub.dev / VSCode Web
+.history/
+*.workspace
+
+# ============================
+# Temporary / Backup Files
+# ============================
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*.swo
+
+# ============================
+# Node / Tooling (future-proof)
+# ============================
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# ============================
+# Minecraft Export Files
+# ============================
+*.mcaddon
+*.mcpack
+*.zip
+
+# ============================
+# Texture Source Files
+# (Not needed in repo)
+# ============================
+*.psd
+*.xcf
+*.aseprite
+*.kra
+
+# ============================
+# Build / Cache Folders
+# ============================
+.cache/
+temp/
+logs/
+*.log
+
+# Script Engine Cache (Bedrock)
+scripts/.cache/
+scripts/cache/
+scripts/temp/
+
+# ============================
+# Backup Folders
+# ============================
+backup/
+backups/
+old/

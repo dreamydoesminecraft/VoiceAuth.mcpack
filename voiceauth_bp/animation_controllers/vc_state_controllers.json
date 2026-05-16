@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.voiceauth.state": {
+      "initial_state": "locked",
+
+      "states": {
+        "locked": {
+          "on_entry": [
+            "/event entity @s voiceauth_lock"
+          ],
+          "transitions": [
+            {
+              "unlocked": "query.voiceauth_is_unlocked == 1"
+            }
+          ]
+        },
+
+        "unlocked": {
+          "on_entry": [
+            "/event entity @s voiceauth_unlock"
+          ],
+          "transitions": [
+            {
+              "locked": "query.voiceauth_is_unlocked == 0"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

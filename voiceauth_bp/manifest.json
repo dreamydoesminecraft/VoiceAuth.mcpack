@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "VoiceAuth",
+    "description": "Human‑verified voice chat controls for Bedrock/PE. Includes mic toggle, mute, PTT, and verification lock.",
+    "uuid": "e3c1c4c1-8f4b-4b8e-9f3d-voiceauth000001",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "b2f4d7a3-1c22-4f0a-9c2e-voiceauth000002",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "script",
+      "language": "javascript",
+      "uuid": "c9a8e4b2-5f33-4d8e-9c1f-voiceauth000003",
+      "version": [1, 0, 0],
+      "entry": "scripts/server/verify_handler.js"
+    }
+  ],
+
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.10.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "1.2.0"
+    },
+    {
+      "module_name": "@minecraft/server-net",
+      "version": "1.0.0"
+    }
+  ]
+}
