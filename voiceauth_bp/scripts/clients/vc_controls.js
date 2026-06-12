@@ -1,13 +1,17 @@
 import { world, system } from "@minecraft/server";
 import { PacketEvent, sendPacket } from "../server/packet_bridge.js";
 
-// Local VC state
-let vcUnlocked = false;
+const vcStates = new Map();
+
+function isUnlocked(player) {
+    return vcStates.get(player.id) === true;
+}
 
 // Update the RP query variable every tick
 system.runInterval(() => {
     for (const player of world.getPlayers()) {
-        player.setDynamicProperty("voiceauth_is_unlocked", vcUnlocked ? 1 : 0);
+        const unlocked = isUnlocked(player);
+        player.setDynamicProperty("voiceauth_is_unlocked", unlocked ? 1 : 0);
     }
 }, 1);
 
@@ -15,21 +19,27 @@ system.runInterval(() => {
  * LISTEN FOR VC LOCK/UNLOCK PACKETS
  * These come from verify_handler.js
  */
-PacketEvent.subscribe("voiceauth:unlock_vc", () => {
-    vcUnlocked = true;
-    console.warn("[VoiceAuth] VC unlocked for this client.");
+PacketEvent.subscribe("voiceauth:unlock_vc", (data) => {
+    if (!data || !data.uuid) return;
+    vcStates.set(data.uuid, true);
+    console.warn(`[VoiceAuth] VC unlocked for ${data.uuid}`);
 });
 
-PacketEvent.subscribe("voiceauth:lock_vc", () => {
-    vcUnlocked = false;
-    console.warn("[VoiceAuth] VC locked for this client.");
+PacketEvent.subscribe("voiceauth:lock_vc", (data) => {
+    if (!data || !data.uuid) return;
+    vcStates.set(data.uuid, false);
+    console.warn(`[VoiceAuth] VC locked for ${data.uuid}`);
+});
+
+world.afterEvents.playerLeave.subscribe((ev) => {
+    vcStates.delete(ev.player.id);
 });
 
 /**
  * MIC TOGGLE
  */
 export function toggleMic(player) {
-    if (!vcUnlocked) {
+    if (!isUnlocked(player)) {
         player.sendMessage("§cYou must verify before using voice chat.");
         return;
     }
@@ -41,7 +51,7 @@ export function toggleMic(player) {
  * MUTE / UNMUTE
  */
 export function toggleMute(player) {
-    if (!vcUnlocked) {
+    if (!isUnlocked(player)) {
         player.sendMessage("§cYou must verify before using voice chat.");
         return;
     }
@@ -53,7 +63,7 @@ export function toggleMute(player) {
  * PUSH‑TO‑TALK (start)
  */
 export function pttStart(player) {
-    if (!vcUnlocked) return;
+    if (!isUnlocked(player)) return;
 
     sendPacket("voiceauth:ptt_start", { uuid: player.id });
 }
@@ -62,7 +72,7 @@ export function pttStart(player) {
  * PUSH‑TO‑TALK (end)
  */
 export function pttEnd(player) {
-    if (!vcUnlocked) return;
+    if (!isUnlocked(player)) return;
 
     sendPacket("voiceauth:ptt_end", { uuid: player.id });
 }

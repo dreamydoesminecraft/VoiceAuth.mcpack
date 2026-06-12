@@ -82,12 +82,9 @@ As a solo indie creator, I appreciate all responsible reports.
 
 ## 🛡 Project Integrity
 
-VoiceAuth is protected under **All Rights Reserved**.  
-Any unauthorized modification, redistribution, or exploit‑based usage is prohibited.
+VoiceAuth is protected under **All Rights Reserved**, U.S. copyright law, and the DMCA.
+Any unauthorized modification, redistribution, exploit-based usage, or copycat upload is prohibited.
 
 For full usage rules, see:
 
-- **RIGHTS_RESERVED.md**  
-- **LICENSE.md**
-
-Thank you for helping keep VoiceAuth safe and secure.
+- **RIGHTS_RESERVED.md**

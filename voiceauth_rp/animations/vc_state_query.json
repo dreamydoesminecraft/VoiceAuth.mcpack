@@ -9,6 +9,15 @@
           }
         }
       }
+    },
+    "animation.voiceauth.state": {
+      "states": {
+        "default": {
+          "variables": {
+            "voiceauth_is_unlocked": 0
+          }
+        }
+      }
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "format_version": 2,
   "header": {
-    "name": "VoiceAuth",
-    "description": "Human‑verified voice chat controls for Bedrock/PE. Includes mic toggle, mute, PTT, and verification lock.",
+    "name": "VoiceAuth BP",
+    "description": "VoiceAuth Behavior Pack for Bedrock voice chat authorization, mic toggle, mute, and PTT.",
     "uuid": "e3c1c4c1-8f4b-4b8e-9f3d-voiceauth000001",
     "version": [1, 0, 0],
     "min_engine_version": [1, 21, 0]

@@ -1,76 +1,67 @@
-# ============================
-# System Files
-# ============================
+# System files
 .DS_Store
 Thumbs.db
 desktop.ini
 __MACOSX/
 
-# iPad / iOS Temp Files
+# macOS / iOS temporary files
 ._*
 *.icloud
 
-# ============================
-# Editor / Workspace Files
-# ============================
+# Editor / IDE
 .vscode/
 .vscode-test/
 *.code-workspace
-
-# GitHub.dev / VSCode Web
 .history/
 *.workspace
+.idea/
+*.sublime-workspace
+*.sublime-project
 
-# ============================
-# Temporary / Backup Files
-# ============================
+# Temporary / backup files
 *.tmp
 *.temp
 *.bak
 *.old
 *.swp
 *.swo
+*.log
 
-# ============================
-# Node / Tooling (future-proof)
-# ============================
+# Python cache (if using helper scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node / tooling (future-proof)
 node_modules/
 npm-debug.log
 yarn-error.log
 package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# ============================
-# Minecraft Export Files
-# ============================
+# Minecraft export / package files
 *.mcaddon
 *.mcpack
 *.zip
 
-# ============================
-# Texture Source Files
-# (Not needed in repo)
-# ============================
+# Texture source files (source art not tracked)
 *.psd
 *.xcf
 *.aseprite
 *.kra
 
-# ============================
-# Build / Cache Folders
-# ============================
+# Build / cache folders
 .cache/
 temp/
 logs/
-*.log
 
-# Script Engine Cache (Bedrock)
+# Bedrock script cache
 scripts/.cache/
 scripts/cache/
 scripts/temp/
 
-# ============================
-# Backup Folders
-# ============================
+# Backup folders
 backup/
 backups/
 old/

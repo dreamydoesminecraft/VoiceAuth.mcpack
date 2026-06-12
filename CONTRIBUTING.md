@@ -1,78 +1,81 @@
 # Contributing to VoiceAuth
 
-Thank you for your interest in contributing to **VoiceAuth**, an original project created by  
-**Dreamy Does Minecraft**, operating as **Dreamy’s Entertainment Production** (solo indie creator).
+Thank you for your interest in contributing to **VoiceAuth**, a solo indie project by **Dreamy Does Minecraft**.
 
-Because this is an independent, single‑developer project, all contributions must follow the rules below.
+VoiceAuth is rights reserved. Because this project is maintained by a single creator, contributions are accepted only with explicit permission.
 
 ---
 
-## 📝 Contribution Rules
+## Permission Required
 
-### 1. Permission Required
-VoiceAuth is a rights‑reserved project.  
-Before contributing **any** code, assets, ideas, or changes, you must request permission.
+Before submitting any code, asset, or documentation changes, request permission first.
 
 Contact: **officialdydmc.msc@gmail.com**
 
-Unapproved pull requests may be closed without review.
+Unapproved issues or pull requests may be closed without review.
 
 ---
 
-## 🔧 What You *Can* Contribute (With Permission)
+## What You Can Contribute (With Permission)
 
-- Bug reports  
-- Feature suggestions  
-- Code improvements  
-- Documentation fixes  
-- UI/UX suggestions  
-- Compatibility ideas  
+With approval, contributions may include:
 
-If you want to propose a feature, open an issue first or contact me directly.
+- Bug reports and reproduction steps
+- Feature requests or suggestions
+- Documentation improvements
+- Code fixes or enhancements
+- UI/UX feedback
+- Compatibility notes
 
----
-
-## 🚫 What You *Cannot* Do
-
-You are **NOT** allowed to:
-
-- Publish modified versions of VoiceAuth  
-- Reupload or redistribute the modpack  
-- Use any code or assets in your own projects  
-- Fork and release your own version  
-- Claim ownership of any part of the project  
-- Submit contributions that violate the project’s rights‑reserved terms  
-
-For full usage rules, see **RIGHTS_RESERVED.md**.
+If you want to propose a feature, please open an issue or contact the maintainer before changing the repository.
 
 ---
 
-## 🎥 Using VoiceAuth in Videos
+## What You Cannot Do
 
-You **may** use VoiceAuth in videos or streams **as long as proper credit is given** to:
+Without permission, you may not:
 
-**Dreamy Does Minecraft**
+- Publish modified versions of VoiceAuth
+- Reupload, redistribute, or sell the pack
+- Use project code or assets in other projects
+- Fork and release your own version
+- Claim ownership or imply official partnership
+- Submit contributions that violate the project’s rights-reserved terms
 
-If you are unsure whether your use is allowed, contact me first.
+VoiceAuth is a rights-reserved project. Copyright is taken seriously, and unauthorized use may result in takedown requests, DMCA notices, or legal action.
 
----
+Unauthorized copycat uploads, modified releases, or derivative videos posted without permission are still subject to copyright enforcement and DMCA takedown requests.
 
-## 🛠 Submitting Contributions (If Approved)
-
-If you have received permission to contribute:
-
-1. Fork the repository  
-2. Create a new branch for your changes  
-3. Make your edits  
-4. Submit a pull request with a clear explanation  
-
-All contributions will be reviewed manually.
+See **RIGHTS_RESERVED.md** for full usage and permissions details.
 
 ---
 
-## ❤️ Respect the Indie Creator
+## Submitting Contributions (After Approval)
 
-VoiceAuth is developed by a single creator.  
-Please be respectful, patient, and supportive when contributing or requesting features.
+If you receive permission to contribute:
 
-Thank you for helping make VoiceAuth better.
+1. Fork the repository
+2. Create a new branch for your changes
+3. Make your edits and test them
+4. Open a pull request with a clear description
+
+All contributions are reviewed manually by the maintainer.
+
+---
+
+## Reporting Issues
+
+To report a bug or request a feature:
+
+- open a GitHub issue
+- include clear reproduction steps
+- attach screenshots or logs when possible
+- explain your environment and version
+
+---
+
+## Respect the Creator
+
+VoiceAuth is developed by a single creator. Please be respectful, patient, and supportive when interacting with the project.
+
+Thank you for supporting VoiceAuth.

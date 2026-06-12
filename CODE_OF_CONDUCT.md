@@ -1,64 +1,57 @@
 # Code of Conduct — VoiceAuth
-Maintained by **Dreamy Does Minecraft**  
-(Independent creator operating as **Dreamy’s Entertainment Production**)
+Maintained by **Dreamy Does Minecraft**
 
-This Code of Conduct outlines the expectations for anyone interacting with the VoiceAuth project, its creator, or its community spaces.
-
----
-
-## 💬 Community Expectations
-
-- **[Respectful Behavior](ca://s?q=Respectful_community_behavior)** — Treat the creator and other users with kindness, patience, and respect.
-- **[Constructive Feedback](ca://s?q=How_to_give_constructive_feedback)** — Offer suggestions politely and with clear reasoning.
-- **[Positive Collaboration](ca://s?q=Positive_collaboration_guidelines)** — Work together in good faith when discussing issues or ideas.
-- **[Safe Environment](ca://s?q=Creating_a_safe_community_environment)** — Avoid harassment, discrimination, or harmful behavior.
+This Code of Conduct applies to all project spaces for VoiceAuth, including GitHub issues, pull requests, discussions, and any related community communication.
 
 ---
 
-## 🚫 Unacceptable Behavior
+## Community Standards
 
-- **[Harassment](ca://s?q=Define_harassment_in_online_communities)** — Any form of bullying, threats, or targeted hostility.
-- **[Discrimination](ca://s?q=Understanding_discrimination_in_communities)** — Racism, sexism, homophobia, ableism, or any hateful conduct.
-- **[Trolling](ca://s?q=What_is_trolling_behavior)** — Intentionally disruptive or inflammatory behavior.
-- **[Spam](ca://s?q=What_counts_as_spam_in_community_projects)** — Excessive messaging, irrelevant content, or self‑promotion.
-- **[Unauthorized Redistribution](ca://s?q=Why_redistribution_is_not_allowed)** — Sharing, copying, or modifying VoiceAuth without permission.
-- **[Impersonation](ca://s?q=Why_impersonation_is_harmful)** — Pretending to be Dreamy Does Minecraft or Dreamy’s Entertainment Production.
+- Be respectful, kind, and inclusive.
+- Treat creators, contributors, and users with patience and professionalism.
+- Share feedback constructively and stay on topic.
+- Help maintain a safe environment free from harassment and abuse.
 
 ---
 
-## 🛠 Contribution Conduct
+## Unacceptable Behavior
 
-- **[Follow Guidelines](ca://s?q=VoiceAuth_contribution_guidelines)** — All contributions must follow the rules in `CONTRIBUTING.md`.
-- **[Ask Permission](ca://s?q=Requesting_permission_to_contribute)** — VoiceAuth is a rights‑reserved indie project; permission is required before contributing.
-- **[Respect Boundaries](ca://s?q=Respecting_indie_creator_boundaries)** — Do not pressure the creator for features, deadlines, or updates.
+The following behavior is not tolerated:
 
----
-
-## 🎥 Content Creator Rules
-
-- **[Credit Required](ca://s?q=How_to_credit_Dreamy_Does_Minecraft)** — Videos using VoiceAuth must credit **Dreamy Does Minecraft**.
-- **[Ask for Permission](ca://s?q=How_to_request_permission_for_mod_use)** — For large projects, servers, or public releases, contact the creator first.
-- **[No Misrepresentation](ca://s?q=Avoiding_mod_misrepresentation)** — Do not claim ownership or imply official partnership.
+- Harassment, bullying, threats, or intimidation.
+- Hate speech or discrimination based on race, gender, sexuality, religion, disability, or identity.
+- Trolling, deliberate disruption, or spamming.
+- Impersonation or misrepresentation of project staff or contributors.
+- Sharing private or personal information without permission.
 
 ---
 
-## ⚠ Enforcement
+## Contribution Guidelines
 
-- **[Report Issues](ca://s?q=How_to_report_community_issues)** — Security or behavior concerns should be reported privately.
-- **[Consequences](ca://s?q=Community_consequence_policies)** — Violations may result in:
-  - Removal from discussions  
-  - Blocked GitHub interactions  
-  - DMCA takedowns for unauthorized use  
-  - Copyright claims for uncredited video use  
+- Follow the process described in `CONTRIBUTING.md`.
+- Submit issues and pull requests respectfully.
+- Do not submit irrelevant, abusive, or offensive content.
+- Respect the project maintainer’s decisions and boundaries.
 
 ---
 
-## 📧 Contact
+## Enforcement
 
-For questions, permissions, or concerns, contact:
+Violations of this Code of Conduct may result in:
+
+- Warnings or removal of comments,
+- Closing or blocking issue and pull request access,
+- Loss of contributor privileges,
+- Reported abuse to GitHub or other platform providers.
+
+If you observe a violation, please report it promptly.
+
+---
+
+## Contact
+
+For questions or concerns, email:
 
 **officialdydmc.msc@gmail.com**
 
-As a solo indie creator, I appreciate respectful communication and responsible participation.
-
-Thank you for supporting VoiceAuth.
+Thank you for supporting VoiceAuth and keeping the community welcoming.

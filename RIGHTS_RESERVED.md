@@ -3,6 +3,8 @@
 VoiceAuth and all related assets, code, textures, UI, and designs are original works created by  
 **Dreamy Does Minecraft**, operating as **Dreamy’s Entertainment Production**, an independent solo creator.
 
+This project is protected under U.S. copyright law and the DMCA, and unauthorized use may be enforced accordingly.
+
 ## 🚫 Restrictions
 
 You are **NOT** permitted to:

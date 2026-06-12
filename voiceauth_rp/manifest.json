@@ -2,7 +2,7 @@
   "format_version": 2,
   "header": {
     "name": "VoiceAuth RP",
-    "description": "Resource Pack for VoiceAuth — includes UI icons and VC state query.",
+    "description": "VoiceAuth Resource Pack for Bedrock UI icons and VC state animations.",
     "uuid": "a1b2c3d4-5678-voiceauth-rp-0001",
     "version": [1, 0, 0],
     "min_engine_version": [1, 21, 0]

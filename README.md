@@ -1,170 +1,153 @@
-VoiceAuth — Bedrock Verification‑Based Voice Control System
+# VoiceAuth
 
-VoiceAuth is a Minecraft Bedrock Edition world add‑on that adds a human‑verification system for voice‑related controls.
-It does not add real audio — instead, it provides the control layer for mic toggle, mute, and push‑to‑talk, locked behind verification.
+VoiceAuth is a Minecraft Bedrock Edition mod/add-on that provides voice chat controls with built-in authorization to stop bots and trolls. It does not add actual audio; it adds the control layer for microphone toggle, mute, and push-to-talk behind a verification gate.
 
-This repository contains both the Behavior Pack and Resource Pack required for VoiceAuth to function.
+VoiceAuth uses an external Discord verification flow to authorize players before they can use voice controls.
 
----
-
-🎤 Features
-
-• Verification‑locked voice controls
-• Mic toggle
-• Mute toggle
-• Push‑to‑talk
-• VC lock/unlock system
-• Anti‑bot & anti‑troll protection
-• Lightweight Resource Pack
-• Script API‑powered Behavior Pack
-• Works in any world (Singleplayer, LAN, Realms, SMP)
-
+This repository contains the raw Behavior Pack and Resource Pack required to run VoiceAuth in a Bedrock world.
 
 ---
 
-📦 Included Packs
+## Features
 
-Behavior Pack (BP)
-
-Handles all logic:
-
-• Verification system
-• Packet bridge
-• VC lock/unlock
-• Mic/mute/PTT logic
-• Animation controller
-
-
-Resource Pack (RP)
-
-Handles visuals:
-
-• UI icons (mic on/off, mute, PTT)
-• VC state query
-• RP manifest
-
-
-Both packs are required.
+- Verification-locked voice controls
+- Mic toggle
+- Mute toggle
+- Push-to-talk
+- Voice control lock/unlock flow
+- Anti-bot and anti-troll protection
+- Lightweight Behavior Pack with Script API support
+- Compatible with Singleplayer, LAN, Realms, and SMP
 
 ---
 
-📁 Folder Structure
+## Included Packs
 
-VoiceAuth/
-│
-├── voiceauth_bp/
-│   ├── manifest.json
-│   ├── scripts/
-│   │   ├── server/
-│   │   │   ├── verify_handler.js
-│   │   │   └── packet_bridge.js
-│   │   └── client/
-│   │       └── vc_controls.js
-│   ├── functions/
-│   │   └── init.mcfunction
-│   └── animation_controllers/
-│       └── vc_state_controller.json
-│
-└── voiceauth_rp/
-    ├── manifest.json
-    ├── animations/
-    │   └── vc_state_query.json
-    └── textures/
-        └── ui/
-            ├── mic_on.png
-            ├── mic_off.png
-            ├── mute.png
-            └── ptt.png
+### Behavior Pack (`voiceauth_bp/`)
 
+Handles the implementation logic:
+
+- player verification
+- packet bridge
+- voice control lock/unlock
+- mic/mute/PTT state management
+- script entry points and initialization
+
+### Resource Pack (`voiceauth_rp/`)
+
+Handles resource data for the voice state system:
+
+- animation state query
+- runtime resource metadata
+
+Both packs are required for VoiceAuth to work correctly.
 
 ---
 
-🔐 Verification Flow
+## Installation
 
-1. Player joins the world
+### In Minecraft
+
+1. Copy `voiceauth_bp/` into `com.mojang/behavior_packs/`
+2. Copy `voiceauth_rp/` into `com.mojang/resource_packs/`
+3. Open your world settings
+4. Enable both packs in the world
+5. Turn on Experimental Gameplay and Script Engine
+6. Launch the world
+
+### Note
+
+This repository contains the raw pack folders. If you want a `.mcaddon` file, package the folders yourself or use a Bedrock add-on exporter.
+
+---
+
+## Requirements
+
+- Minecraft Bedrock Edition 1.21 or newer
+- Script Engine enabled
+- Experimental gameplay toggles enabled
+- External Discord verification bridge or compatible auth connector
+
+---
+
+## Usage
+
+VoiceAuth gates voice control features until a player is verified by an external system, typically a Discord bot or connector.
+
+Common control commands:
+
+- `!mic` — toggle microphone
+- `!mute` — toggle mute
+- `!talk` — push-to-talk
+
+Unverified players are prevented from using VC controls until verification completes.
+
+---
+
+## Folder Structure
+
+- `voiceauth_bp/`
+  - `manifest.json`
+  - `scripts/`
+    - `server/`
+      - `verify_handler.js`
+      - `packet_bridge.js`
+    - `client/`
+      - `vc_controls.js`
+  - `functions/`
+    - `init.mcfunction`
+
+- `voiceauth_rp/`
+  - `manifest.json`
+  - `animation_controllers/`
+    - `vc_state_controllers.json`
+  - `animations/`
+    - `vc_state_query.json`
+
+---
+
+## Verification Flow
+
+1. Player enters the world
 2. VoiceAuth marks them as unverified
-3. A verify_request packet is sent
-4. External system (Discord bot, Java plugin, etc.) responds
-5. VoiceAuth unlocks or locks VC controls
-
-
-Unverified players cannot use any VC controls.
-
-Learn more:
-Verification System
+3. A verification request is emitted to an external system
+4. A Discord bot or auth bridge confirms the player
+5. Voice controls are unlocked or remain locked
 
 ---
 
-🎮 Usage
+## Discord integration
 
-Test Commands
+VoiceAuth expects an external verification system (e.g., a Discord bot) to confirm players.
 
-• !mic — toggle microphone
-• !mute — toggle mute
-• !talk — push‑to‑talk (2 seconds)
+Payload (POST JSON):
 
+{
+  "uuid": "<player-uuid>",
+  "verified": true
+}
 
-UI Icons
+Delivery options:
+- Run a local webhook on the server and have your Discord bot POST to it (see `discord_bridge/`).
+- If you have console/RCON access, call the included mcfunctions:
 
-Located in voiceauth_rp/textures/ui/:
+  execute as <playerName> run function voiceauth:set_verified
 
-• mic_on.png
-• mic_off.png
-• mute.png
-• ptt.png
+  execute as <playerName> run function voiceauth:clear_verified
 
-
-Need help designing icons?
-Custom UI Icons
-
----
-
-🛠 Installation
-
-For Players
-
-1. Download the .mcaddon
-2. Tap to import into Minecraft
-3. Enable both packs in your world
-4. Enable required experimental toggles:• Beta APIs
-• Script Engine
-
-5. Join the world and verify
+See `VOICEAUTH_DISCORD_BRIDGE.md` for more details and examples.
 
 
-For Developers
+## Credits
 
-Place folders into:
-
-com.mojang/
-  behavior_packs/
-  resource_packs/
-
+- Developer: Dreamy Does Minecraft
+- Project: VoiceAuth
+- Platform: Minecraft Bedrock Edition
 
 ---
 
-⚙ Requirements
+## License & Support
 
-• Minecraft Bedrock 1.21+
-• Script API enabled
-• Experimental toggles ON
-• Optional: external verification system
-
-
----
-
-👤 Credits
-
-Developer: Dreamy Does Minecraft
-Project: VoiceAuth
-Platform: Minecraft Bedrock Edition
-Purpose: Safe, verified voice control system for world owners
-
----
-
-🚀 Exporting as `.mcaddon`
-
-A full export guide is here:
-.mcaddon Export Guide
+See the repository root for license, contribution, and support guidelines.
 
 ---

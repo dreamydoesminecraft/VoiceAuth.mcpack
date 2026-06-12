@@ -1,54 +1,55 @@
 # Support Guide — VoiceAuth
-Maintained by **Dreamy Does Minecraft**  
-(Independent creator operating as **Dreamy’s Entertainment Production**)
+Maintained by **Dreamy Does Minecraft**
 
-Thank you for using VoiceAuth. This document explains how to get help, report issues, and request features while respecting the boundaries of a solo indie developer.
+Thank you for using VoiceAuth. This guide explains how to get help, report issues, and request features while respecting the boundaries of a solo indie creator.
 
 ---
 
 ## 🆘 Getting Help
 
-If you need assistance with VoiceAuth, start with the following:
+Start with these steps before contacting support:
 
-- **[Check Known Issues](ca://s?q=VoiceAuth_known_issues)** — Look for existing bugs or problems already reported.
-- **[Review Documentation](ca://s?q=VoiceAuth_documentation_overview)** — Read the README, RIGHTS_RESERVED, and SECURITY guidelines.
-- **[Search Existing Discussions](ca://s?q=Search_VoiceAuth_discussions)** — See if someone else had the same question.
+- Read `README.md` for installation and usage details.
+- Review `RIGHTS_RESERVED.md` and `SECURITY.md` for project rules.
+- Search existing issues in this repository to see if the problem is already reported.
 
-These steps often solve most problems quickly.
+Most questions are resolved by checking the docs and current issue list first.
 
 ---
 
 ## 🐞 Reporting Bugs
 
-If you find a bug, please provide:
+If you find a bug, include the following information:
 
-- **[Steps to Reproduce](ca://s?q=How_to_write_steps_to_reproduce)** — Explain exactly how the issue happens.
-- **[Expected vs Actual Behavior](ca://s?q=Expected_vs_actual_behavior)** — What should happen vs what did happen.
-- **[Version Information](ca://s?q=How_to_find_mod_version)** — Include the version of VoiceAuth and your Minecraft version.
-- **[Screenshots or Logs](ca://s?q=How_to_collect_debug_info)** — If possible.
+- Steps to reproduce the issue.
+- What you expected to happen versus what actually happened.
+- Minecraft Bedrock version and VoiceAuth version.
+- Screenshots, console output, or logs if available.
 
-Submit bug reports through GitHub Issues or email.
+Submit bug reports through GitHub Issues or email the maintainer.
 
 ---
 
 ## 💡 Requesting Features
 
-Feature requests are welcome, but must follow these rules:
+Feature requests are welcome, but keep them respectful and realistic.
 
-- **[Be Clear and Specific](ca://s?q=How_to_write_a_feature_request)** — Describe what you want and why.
-- **[Respect Indie Limitations](ca://s?q=Understanding_indie_dev_limits)** — VoiceAuth is developed by one person.
-- **[Avoid Demands](ca://s?q=How_to_make_respectful_requests)** — Suggestions are welcome; pressure is not.
+- Describe the feature clearly.
+- Explain why it is useful.
+- Understand that VoiceAuth is maintained by one person.
+- Do not demand immediate changes.
 
-Not all features can be added, but all respectful requests will be considered.
+If possible, open an issue first to discuss the idea before sending a pull request.
 
 ---
 
 ## 🔐 Security Concerns
 
-If you discover a vulnerability or exploit:
+If you discover a vulnerability or exploit, report it privately.
 
-- **[Report Privately](ca://s?q=How_to_report_security_issues_privately)** — Do not post it publicly.
-- **[Follow Responsible Disclosure](ca://s?q=Responsible_disclosure_steps)** — Give the creator time to fix it.
+- Do not disclose the issue publicly before it is fixed.
+- Provide a clear description and reproduction steps.
+- Include relevant version information.
 
 See `SECURITY.md` for full details.
 
@@ -56,32 +57,30 @@ See `SECURITY.md` for full details.
 
 ## 🎥 Using VoiceAuth in Videos
 
-You **may** use VoiceAuth in videos or streams **as long as proper credit is given** to:
+You may use VoiceAuth in videos or streams if you credit **Dreamy Does Minecraft**.
 
-**Dreamy Does Minecraft**
+Unauthorized copycat uploads, repackages, or derivative releases may still be subject to copyright enforcement.
 
-For large projects, servers, or public releases:
-
-- **[Request Permission](ca://s?q=Request_permission_for_mod_use)** — Contact the creator before using the mod.
+For large projects, servers, or public releases, request permission first.
 
 ---
 
 ## 📧 Contact for Support
 
-For questions, permissions, or help, contact:
+For support, permission requests, or other questions, contact:
 
 **officialdydmc.msc@gmail.com**
 
-Please allow time for responses — this project is maintained by a single indie creator.
+Please allow extra time for responses — this project is maintained by a single indie developer.
 
 ---
 
-## ❤️ Supporting the Creator
+## ❤️ Support the Project
 
-If you want to support VoiceAuth and its development:
+If you want to support VoiceAuth:
 
-- **[Share Feedback](ca://s?q=Share_feedback_for_VoiceAuth)** — Positive feedback helps shape future updates.
-- **[Credit the Creator](ca://s?q=How_to_credit_Dreamy_Does_Minecraft)** — Especially in videos or streams.
-- **[Respect Boundaries](ca://s?q=Respecting_indie_creator_boundaries)** — Patience and kindness go a long way.
+- Share constructive feedback.
+- Give credit in videos or streams.
+- Respect the creator’s time and boundaries.
 
-Thank you for supporting VoiceAuth and indie development.
+Thank you for supporting VoiceAuth.
