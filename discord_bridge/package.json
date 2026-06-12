@@ -1,13 +1,17 @@
 {
   "name": "voiceauth-discord-bridge",
-  "version": "0.1.0",
-  "description": "Simple webhook stub for VoiceAuth (development)",
+  "version": "0.2.0",
+  "description": "Discord bridge for VoiceAuth verification",
   "main": "webhook_stub.js",
   "type": "module",
   "scripts": {
-    "start": "node webhook_stub.js"
+    "start": "node webhook_stub.js",
+    "bot": "node example_bot.js",
+    "dev": "node webhook_stub.js & node example_bot.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "discord.js": "^14.0.0",
+    "axios": "^1.4.0"
   }
 }

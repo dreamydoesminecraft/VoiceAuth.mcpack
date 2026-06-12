@@ -1,51 +1,96 @@
 import { world, system } from "@minecraft/server";
 import { PacketEvent, sendPacket } from "./packet_bridge.js";
+import { logContentCreator, getVerifiedCreators, exportCreatorsData } from "./creator_tracker.js";
 import "../clients/vc_controls.js";
 
-// Store verification states for players with timestamp: { verified: boolean, ts: number }
+// Store verification states for players
 const verifiedPlayers = new Map();
-// Expiration window (milliseconds) - 30 days
-const VERIFICATION_TTL = 30 * 24 * 60 * 60 * 1000;
+const VERIFICATION_TTL = 30 * 24 * 60 * 60 * 1000; // 30 days
+const DISCORD_WEBHOOK = "http://localhost:3000/verify-pending";
 
 /**
- * When a player joins the world, request verification.
+ * Check Discord webhook for pending verifications periodically
+ */
+system.runInterval(() => {
+    try {
+        for (const player of world.getPlayers()) {
+            const uuid = player.id;
+            const entry = verifiedPlayers.get(uuid);
+            
+            // Skip already verified players
+            if (entry && entry.verified) continue;
+            
+            // Non-blocking async check
+            (async () => {
+                try {
+                    const response = await fetch(`${DISCORD_WEBHOOK}/${uuid}`);
+                    if (!response.ok) return;
+                    
+                    const data = await response.json();
+                    if (data.verified === null || data.verified === undefined) return;
+                    
+                    const now = Date.now();
+                    verifiedPlayers.set(uuid, { verified: !!data.verified, ts: data.verified ? now : 0 });
+                    
+                    if (data.verified) {
+                        try { player.addTag && player.addTag('voiceauth_verified'); } catch (e) {}
+                        sendPacket("voiceauth:unlock_vc", { uuid });
+                        console.warn(`[VoiceAuth] Discord APPROVED: ${player.name}`);
+                        
+                        // Log if this is a content creator
+                        if (data.isCreator) {
+                            logContentCreator(uuid, player.name, data.platform || "minecraft");
+                            console.warn(`[VoiceAuth] Content creator logged: ${player.name}`);
+                        }
+                    } else {
+                        try { player.removeTag && player.removeTag('voiceauth_verified'); } catch (e) {}
+                        sendPacket("voiceauth:lock_vc", { uuid });
+                        console.warn(`[VoiceAuth] Discord DENIED: ${player.name}`);
+                    }
+                } catch (err) {
+                    // Webhook offline - continue with local verification
+                }
+            })();
+        }
+    } catch (err) {
+        console.warn(`[VoiceAuth] Discord check error: ${err}`);
+    }
+}, 100); // Every 5 seconds
+
+/**
+ * When a player joins, request verification
  */
 world.afterEvents.playerSpawn.subscribe((ev) => {
     if (!ev.initialSpawn) return;
 
     const player = ev.player;
     const uuid = player.id;
-
     const entry = verifiedPlayers.get(uuid);
     const now = Date.now();
 
-    // If player has a persistent tag from score restore, honor it
     try {
         if (player.hasTag && player.hasTag('voiceauth_verified')) {
             verifiedPlayers.set(uuid, { verified: true, ts: now });
             sendPacket("voiceauth:unlock_vc", { uuid });
-            console.warn(`[VoiceAuth] Restored VERIFIED state (tag) for ${player.name} (${uuid})`);
+            console.warn(`[VoiceAuth] Restored verified: ${player.name}`);
             return;
         }
     } catch (e) {
-        // ignore tag check errors
+        // ignore
     }
 
-    // If we have a recent verified timestamp, restore verified state
     if (entry && entry.verified && (now - entry.ts) < VERIFICATION_TTL) {
         sendPacket("voiceauth:unlock_vc", { uuid });
-        console.warn(`[VoiceAuth] Restored VERIFIED state for ${player.name} (${uuid})`);
+        console.warn(`[VoiceAuth] Restored verified: ${player.name}`);
         return;
     }
 
-    // otherwise mark unverified and request verification
     verifiedPlayers.set(uuid, { verified: false, ts: 0 });
     sendPacket("voiceauth:verify_request", { uuid });
-    console.warn(`[VoiceAuth] Sent verification request for ${player.name} (${uuid})`);
+    console.warn(`[VoiceAuth] Verification request: ${player.name}`);
 });
 
 world.afterEvents.playerLeave.subscribe((ev) => {
-    // keep persisted entries (timestamps) but remove transient session-only entries
     const uuid = ev.player.id;
     const entry = verifiedPlayers.get(uuid);
     if (!entry || (entry.verified === false && entry.ts === 0)) {
@@ -54,16 +99,11 @@ world.afterEvents.playerLeave.subscribe((ev) => {
 });
 
 /**
- * Listen for verification responses from the packet bridge.
- * Expected packet:
- * {
- *   uuid: "<player uuid>",
- *   verified: true/false
- * }
+ * Listen for local verification responses
  */
 PacketEvent.subscribe("voiceauth:verify_response", (data) => {
     if (!data || typeof data.uuid !== "string" || typeof data.verified !== "boolean") {
-        console.warn("[VoiceAuth] Invalid verify_response payload", data);
+        console.warn("[VoiceAuth] Invalid verify_response", data);
         return;
     }
 
@@ -73,19 +113,24 @@ PacketEvent.subscribe("voiceauth:verify_response", (data) => {
 
     const player = [...world.getPlayers()].find((p) => p.id === uuid);
     if (!player) {
-        console.warn(`[VoiceAuth] Verification response received for offline player ${uuid}`);
+        console.warn(`[VoiceAuth] Response for offline player: ${uuid}`);
         return;
     }
 
     if (verified) {
-        // add persistent tag so restore function can pick this up after restart
         try { player.addTag && player.addTag('voiceauth_verified'); } catch (e) {}
         sendPacket("voiceauth:unlock_vc", { uuid });
-        console.warn(`[VoiceAuth] ${player.name} is VERIFIED. VC unlocked.`);
+        console.warn(`[VoiceAuth] Verified: ${player.name}`);
+        
+        // Log if content creator
+        if (data.isCreator) {
+            logContentCreator(uuid, player.name, data.platform || "minecraft");
+            console.warn(`[VoiceAuth] Content creator logged: ${player.name}`);
+        }
     } else {
         try { player.removeTag && player.removeTag('voiceauth_verified'); } catch (e) {}
         sendPacket("voiceauth:lock_vc", { uuid });
-        console.warn(`[VoiceAuth] ${player.name} is NOT verified. VC locked.`);
+        console.warn(`[VoiceAuth] Not verified: ${player.name}`);
     }
 });
 
@@ -96,47 +141,37 @@ function getPlayerByUuid(uuid) {
 PacketEvent.subscribe("voiceauth:toggle_mic", (data) => {
     if (!data || typeof data.uuid !== "string") return;
     const player = getPlayerByUuid(data.uuid);
-    if (!player) return;
-    if (!verifiedPlayers.get(data.uuid)) {
-        player.sendMessage("§cVoiceAuth: You must verify before toggling the mic.");
+    if (!player || !verifiedPlayers.get(data.uuid)?.verified) {
+        player?.sendMessage("§cMust verify first");
         return;
     }
-
-    player.sendMessage("§aVoiceAuth: Mic toggle request received.");
-    console.warn(`[VoiceAuth] ${player.name} requested mic toggle.`);
+    player.sendMessage("§aMic toggle received");
+    console.warn(`[VoiceAuth] Mic toggle: ${player.name}`);
 });
 
 PacketEvent.subscribe("voiceauth:mute_toggle", (data) => {
     if (!data || typeof data.uuid !== "string") return;
     const player = getPlayerByUuid(data.uuid);
-    if (!player) return;
-    if (!verifiedPlayers.get(data.uuid)) {
-        player.sendMessage("§cVoiceAuth: You must verify before toggling mute.");
+    if (!player || !verifiedPlayers.get(data.uuid)?.verified) {
+        player?.sendMessage("§cMust verify first");
         return;
     }
-
-    player.sendMessage("§aVoiceAuth: Mute toggle request received.");
-    console.warn(`[VoiceAuth] ${player.name} requested mute toggle.`);
+    player.sendMessage("§aMute toggle received");
+    console.warn(`[VoiceAuth] Mute toggle: ${player.name}`);
 });
 
 PacketEvent.subscribe("voiceauth:ptt_start", (data) => {
     if (!data || typeof data.uuid !== "string") return;
     const player = getPlayerByUuid(data.uuid);
-    if (!player) return;
-    if (!verifiedPlayers.get(data.uuid)) return;
-
-    player.sendMessage("§aVoiceAuth: Push-to-talk activated.");
-    console.warn(`[VoiceAuth] ${player.name} started PTT.`);
+    if (!player || !verifiedPlayers.get(data.uuid)?.verified) return;
+    console.warn(`[VoiceAuth] PTT start: ${player.name}`);
 });
 
 PacketEvent.subscribe("voiceauth:ptt_end", (data) => {
     if (!data || typeof data.uuid !== "string") return;
     const player = getPlayerByUuid(data.uuid);
-    if (!player) return;
-    if (!verifiedPlayers.get(data.uuid)) return;
-
-    player.sendMessage("§aVoiceAuth: Push-to-talk ended.");
-    console.warn(`[VoiceAuth] ${player.name} ended PTT.`);
+    if (!player || !verifiedPlayers.get(data.uuid)?.verified) return;
+    console.warn(`[VoiceAuth] PTT end: ${player.name}`);
 });
 
 export function isVerified(player) {
@@ -146,15 +181,18 @@ export function isVerified(player) {
     return (Date.now() - entry.ts) < VERIFICATION_TTL;
 }
 
-// Periodic cleanup of expired verification entries (runs every hour)
+// Cleanup expired verifications hourly
 system.runInterval(() => {
     const now = Date.now();
     for (const [uuid, entry] of verifiedPlayers) {
         if (!entry || !entry.verified) continue;
         if ((now - entry.ts) >= VERIFICATION_TTL) {
             verifiedPlayers.set(uuid, { verified: false, ts: 0 });
-            console.warn(`[VoiceAuth] Verification expired for ${uuid}`);
-            sendPacket("voiceauth:lock_vc", { uuid });
+            const player = [...world.getPlayers()].find((p) => p.id === uuid);
+            if (player) {
+                sendPacket("voiceauth:lock_vc", { uuid });
+                console.warn(`[VoiceAuth] Verification expired: ${player.name}`);
+            }
         }
     }
-}, 3600 * 20); // run every 3600 seconds * game ticks approximation (bedrock interval units)
+}, 72000); // 1 hour

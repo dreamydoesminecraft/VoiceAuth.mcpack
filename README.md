@@ -140,7 +140,7 @@ See `VOICEAUTH_DISCORD_BRIDGE.md` for more details and examples.
 
 ## Credits
 
-- Developer: Dreamy Does Minecraft
+- Developer: Princess Kenny Does Minecraft
 - Project: VoiceAuth
 - Platform: Minecraft Bedrock Edition
 

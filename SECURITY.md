@@ -1,5 +1,5 @@
 # Security Policy — VoiceAuth
-Maintained by **Dreamy Does Minecraft**  
+Maintained by **Princess Kenny Does Minecraft**  
 (Independent creator operating as **Dreamy’s Entertainment Production**)
 
 VoiceAuth is a Minecraft Bedrock modpack that includes scripting, UI assets, and verification logic.  
@@ -36,7 +36,7 @@ You **must report it privately**.
 ### 📧 Contact for Security Reports
 Send all security‑related reports to:
 
-**officialdydmc.msc@gmail.com**
+**official.pkdmc.msc@gmail.com**
 
 Please include:
 

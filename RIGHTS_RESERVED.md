@@ -1,7 +1,7 @@
 # Rights Reserved — Dreamy Does Minecraft / Dreamy’s Entertainment Production
 
 VoiceAuth and all related assets, code, textures, UI, and designs are original works created by  
-**Dreamy Does Minecraft**, operating as **Dreamy’s Entertainment Production**, an independent solo creator.
+**Princess Kenny Does Minecraft**, operating as **Dreamy’s Entertainment Production**, an independent solo creator.
 
 This project is protected under U.S. copyright law and the DMCA, and unauthorized use may be enforced accordingly.
 
@@ -21,8 +21,8 @@ You are **NOT** permitted to:
 You **ARE** permitted to:
 
 - Use the modpack in your personal Minecraft worlds  
-- Use it in videos or streams **as long as proper credit is given to Dreamy Does Minecraft**  
-- Contact me if you want to use the modpack in a project, server, or public release  
+- Use it in videos or streams **as long as proper credit is given to Princess Kenny Does Minecraft**  
+- Contact me if you want to use the modpack in a project, server, or public release
 
 If you are unsure whether your use is allowed, you must ask first.
 
@@ -30,13 +30,13 @@ If you are unsure whether your use is allowed, you must ask first.
 
 For permission requests, questions, or usage approval, contact:
 
-**officialdydmc.msc@gmail.com**
+**official.pkdmc.msc@gmail.com**
 
 ## ⚠ Copyright Enforcement
 
 Unauthorized use, redistribution, modification, or uncredited use of this modpack,  
 its code, or its assets **may result in a DMCA takedown or copyright claim**  
-filed by **Dreamy’s Entertainment Production** (solo creator: Dreamy Does Minecraft).
+filed by **Dreamy’s Entertainment Production** (solo creator: Princess Kenny Does Minecraft).
 
 This includes:
 

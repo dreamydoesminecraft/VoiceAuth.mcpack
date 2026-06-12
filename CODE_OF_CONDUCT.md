@@ -1,5 +1,5 @@
 # Code of Conduct — VoiceAuth
-Maintained by **Dreamy Does Minecraft**
+Maintained by **Princess Kenny Does Minecraft**
 
 This Code of Conduct applies to all project spaces for VoiceAuth, including GitHub issues, pull requests, discussions, and any related community communication.
 
@@ -52,6 +52,6 @@ If you observe a violation, please report it promptly.
 
 For questions or concerns, email:
 
-**officialdydmc.msc@gmail.com**
+**official,pkdmc.msc@gmail.com**
 
 Thank you for supporting VoiceAuth and keeping the community welcoming.

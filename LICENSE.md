@@ -1,12 +1,12 @@
 # VoiceAuth — All Rights Reserved License
 
-Copyright © 2026 Dreamy Does Minecraft
+Copyright © 2026 Dreamy's Entertainment Production Studio
 
 All rights reserved.
 
 VoiceAuth and all associated code, assets, textures, animations, UI,
 behavior packs, resource packs, scripts, and documentation are the
-original work of Dreamy Does Minecraft and Dreamy’s Entertainment Production.
+original work of Princess Kenny Does Minecraft and Dreamy’s Entertainment Production.
 
 ## Restrictions
 
@@ -31,7 +31,7 @@ With permission, limited use may be granted for:
 
 Any use beyond what is explicitly allowed requires written permission from the copyright holder.
 
-Contact: **officialdydmc.msc@gmail.com**
+Contact: **official.pkdmc.msc@gmail.com**
 
 ## Legal Notice
 
